@@ -7,14 +7,14 @@ const carOptions = [
     title: "AC Hatchback",
     description: "Economy Cabs",
     seats: "4 seats",
-    image: "https://imgd.aeplcdn.com/370x208/n/cw/ec/170173/dzire-2024-exterior-right-front-three-quarter-3.jpeg?isig=0&q=80",
+    image: "src/assets/suzuki-dzire.jpg",
     info: "Perfect for city travel and short trips, our hatchbacks are fuel-efficient and easy to navigate in urban settings.",
   },
   {
     title: "AC Sedan",
     description: "Premium Economy Cabs",
-    seats: "4 seats",
-    image: "https://imgd.aeplcdn.com/664x374/n/cw/ec/130591/fronx-exterior-right-front-three-quarter-2.jpeg?isig=0&q=80",
+    seats: "7 seats",
+    image: "src/assets/rumion.png",
     info: "Our sedans offer an excellent balance of comfort and value, ideal for business travel or small families.",
   },
   {
@@ -80,13 +80,13 @@ const CarOptions = () => {
           ))}
         </div>
         
-        <div className="mt-10 text-center">
+        {/* <div className="mt-10 text-center">
           <Link href="/fleet">
             <span className="inline-flex items-center text-primary font-medium hover:underline cursor-pointer">
               View Complete Fleet <ArrowRight className="ml-2 h-4 w-4" />
             </span>
           </Link>
-        </div>
+        </div> */}
       </div>
     </section>
   );

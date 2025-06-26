@@ -52,36 +52,52 @@ const Header = () => {
         { href: "/tour-packages#adventure", label: "Adventure Tours" },
       ] 
     },
-    { href: "/fleet", label: "Our Fleet" },
+    // { href: "/fleet", label: "Our Fleet" },
     { href: "/contact", label: "Contact" },
+    { href: "/booking", label: "Book Now" },
   ];
 
   return (
-    <header className={`sticky top-0 z-50 bg-white ${isScrolled ? 'shadow-md' : ''}`}>
+    <header
+      className={`sticky top-0 z-50 bg-white ${isScrolled ? "shadow-md" : ""}`}
+    >
       <nav className="container mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
         <Link href="/">
           <span className="flex items-center cursor-pointer">
-            <span className="text-2xl font-bold font-sans text-primary">
-              Gautham<span className="text-secondary"> Tours and Travels</span>
+            <img
+              src="src/assets/logo-Photoroom.png"
+              alt="Gautham Tours and Travels Logo"
+              className="h-12 w-12"
+            />
+            <span className="text-2xl font-bold font-sans text-slate-800">
+              Gautham<span className="text-blue-600"> Tours and Travels</span>
             </span>
           </span>
         </Link>
-        
+
         {/* Desktop Navigation */}
         {!isMobile && (
           <div className="flex items-center space-x-8">
-            {navigationLinks.map((link, index) => (
+            {navigationLinks.map((link, index) =>
               link.hasDropdown ? (
-                <div key={link.label} className="relative" ref={fleetDropdownRef}>
-                  <button 
+                <div
+                  key={link.label}
+                  className="relative"
+                  ref={fleetDropdownRef}
+                >
+                  <button
                     className="flex items-center text-foreground hover:text-primary font-medium transition"
                     onClick={() => setFleetDropdownOpen(!fleetDropdownOpen)}
                   >
                     {link.label}
-                    <ChevronDown className={`ml-1 h-4 w-4 transition-transform ${fleetDropdownOpen ? 'rotate-180' : ''}`} />
+                    <ChevronDown
+                      className={`ml-1 h-4 w-4 transition-transform ${
+                        fleetDropdownOpen ? "rotate-180" : ""
+                      }`}
+                    />
                   </button>
-                  
+
                   {fleetDropdownOpen && (
                     <div className="absolute top-full left-0 mt-2 bg-white rounded-md shadow-lg overflow-hidden z-20 w-64">
                       <div className="py-2">
@@ -99,16 +115,20 @@ const Header = () => {
               ) : (
                 <div key={link.label}>
                   <Link href={link.href || "/"}>
-                    <span className={`text-foreground hover:text-primary font-medium transition cursor-pointer ${location === link.href ? 'text-primary' : ''}`}>
+                    <span
+                      className={`text-foreground hover:text-primary font-medium transition cursor-pointer ${
+                        location === link.href ? "text-primary" : ""
+                      }`}
+                    >
                       {link.label}
                     </span>
                   </Link>
                 </div>
               )
-            ))}
+            )}
           </div>
         )}
-        
+
         {/* Phone Numbers */}
         {!isMobile && (
           <div className="flex flex-col text-secondary font-medium text-sm">
@@ -122,16 +142,26 @@ const Header = () => {
             </a>
           </div>
         )}
-        
+
         {/* Mobile Menu Button */}
         {isMobile && (
-          <Button 
+          <Button
             variant="ghost"
             onClick={toggleMobileMenu}
             aria-label="Toggle menu"
             className="md:hidden text-foreground"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <line x1="3" y1="12" x2="21" y2="12"></line>
               <line x1="3" y1="6" x2="21" y2="6"></line>
               <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -139,29 +169,33 @@ const Header = () => {
           </Button>
         )}
       </nav>
-      
+
       {/* Mobile Navigation */}
       {isMobile && isMobileMenuOpen && (
         <div className="bg-white px-4 py-3 shadow-inner">
           <div className="flex flex-col space-y-3">
-            {navigationLinks.map((link) => (
+            {navigationLinks.map((link) =>
               link.hasDropdown ? (
                 <div key={link.label} className="py-2">
-                  <div 
+                  <div
                     className="flex items-center justify-between text-foreground font-medium"
                     onClick={() => setFleetDropdownOpen(!fleetDropdownOpen)}
                   >
                     <span>{link.label}</span>
-                    <ChevronDown className={`h-4 w-4 transition-transform ${fleetDropdownOpen ? 'rotate-180' : ''}`} />
+                    <ChevronDown
+                      className={`h-4 w-4 transition-transform ${
+                        fleetDropdownOpen ? "rotate-180" : ""
+                      }`}
+                    />
                   </div>
-                  
+
                   {fleetDropdownOpen && (
                     <div className="pl-4 mt-2 border-l-2 border-gray-200 space-y-2">
                       {link.dropdownItems?.map((item) => (
                         <div key={item.label}>
                           <Link href={item.href}>
-                            <span 
-                              className="block text-sm text-foreground hover:text-primary transition py-1 cursor-pointer" 
+                            <span
+                              className="block text-sm text-foreground hover:text-primary transition py-1 cursor-pointer"
                               onClick={() => setIsMobileMenuOpen(false)}
                             >
                               {item.label}
@@ -175,8 +209,10 @@ const Header = () => {
               ) : (
                 <div key={link.label}>
                   <Link href={link.href || "/"}>
-                    <span 
-                      className={`block text-foreground hover:text-primary font-medium transition py-2 cursor-pointer ${location === link.href ? 'text-primary' : ''}`}
+                    <span
+                      className={`block text-foreground hover:text-primary font-medium transition py-2 cursor-pointer ${
+                        location === link.href ? "text-primary" : ""
+                      }`}
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {link.label}
@@ -184,13 +220,19 @@ const Header = () => {
                   </Link>
                 </div>
               )
-            ))}
+            )}
             <div className="pt-2 border-t">
-              <a href="tel:9833401900" className="flex items-center text-secondary font-medium py-1">
+              <a
+                href="tel:9833401900"
+                className="flex items-center text-secondary font-medium py-1"
+              >
                 <Phone className="h-4 w-4 mr-2" />
                 <span>9833401900</span>
               </a>
-              <a href="tel:8850919298" className="flex items-center text-secondary font-medium py-1">
+              <a
+                href="tel:8850919298"
+                className="flex items-center text-secondary font-medium py-1"
+              >
                 <Phone className="h-4 w-4 mr-2" />
                 <span>8850919298</span>
               </a>

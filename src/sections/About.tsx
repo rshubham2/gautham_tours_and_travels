@@ -42,34 +42,26 @@ const About = () => {
               the typical hassles of road travel while preserving the joy of
               discovery and freedom that makes road trips special.
             </p>
-
-            <div className="mt-8">
-              <Link href="/about">
-                <span className="bg-secondary hover:bg-secondary/90 text-white font-medium py-3 px-6 rounded-lg transition shadow-lg inline-flex items-center cursor-pointer">
-                  Learn More About Us <ArrowRight className="ml-2 h-4 w-4" />
-                </span>
-              </Link>
-            </div>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            {/* Road through mountains */}
+            {/* Shirdi */}
             <img
-              src="https://d3sftlgbtusmnv.cloudfront.net/blog/wp-content/uploads/2024/10/Places-To-Visit-In-Konkan-In-August-Cover-Photo-840x425.jpg"
-              alt="Scenic mountain road in Maharashtra"
+              src="src/assets/shirdi.jpg"
+              alt="shirdi temple"
               className="rounded-xl shadow-md h-full object-cover"
             />
 
-            {/* Luxury car */}
+            {/* Bus */}
             <img
-              src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=500"
-              alt="Luxury chauffeur-driven car"
+              src="src/assets/image.png"
+              alt="Bus"
               className="rounded-xl shadow-md object-cover mb-4"
             />
 
-            {/* Maharashtra tourist destination */}
+            {/* Grishneshwar */}
             <img
-              src="https://images.unsplash.com/photo-1524613032530-449a5d94c285?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=500"
+              src="src/assets/grishneshwar.jpg"
               alt="Maharashtra tourist destination"
               className="rounded-xl shadow-md object-cover mt-4 col-span-2"
             />

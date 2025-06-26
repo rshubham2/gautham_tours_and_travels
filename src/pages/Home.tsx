@@ -24,7 +24,6 @@ const Home = () => {
         <About />
         <CarOptions />
         <ScrollingMap />
-        <Booking />
         <FAQ />
         <CTA />
       </main>

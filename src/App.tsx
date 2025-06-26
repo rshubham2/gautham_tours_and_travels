@@ -25,8 +25,8 @@ function App() {
               <Route path="/booking" component={BookingForm} />
               <Route path="/contact" component={ContactPage} />
               <Route path="/tour-packages" component={TourPackagesPage} />
-              <Route path="/fleet" component={FleetPage} />
-              <Route path="/fleet/:vehicleType" component={FleetPage} />
+              {/* <Route path="/fleet" component={FleetPage} />
+              <Route path="/fleet/:vehicleType" component={FleetPage} /> */}
               <Route component={NotFound} />
             </Switch>
           </main>

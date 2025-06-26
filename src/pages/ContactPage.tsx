@@ -1,204 +1,137 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { useState } from "react";
-import { useToast } from "../hooks/use-toast";
-import { Phone, Mail, MapPin } from "lucide-react";
-import { Helmet } from "react-helmet";
-
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "../components/ui/form";
-import { Input } from "../components/ui/input";
+import { Phone, Mail, MapPin, Clock, Car, Shield, Star } from "lucide-react";
+import { Card, CardContent } from "../components/ui/card";
 import { Button } from "../components/ui/button";
-import { Textarea } from "../components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../components/ui/select";
-import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
-
-const contactFormSchema = z.object({
-  name: z.string().min(1, "Name is required"),
-  email: z.string().email("Please enter a valid email address"),
-  phone: z.string().min(10, "Valid phone number is required"),
-  subject: z.string().min(1, "Subject is required"),
-  message: z.string().min(1, "Message is required"),
-});
-
-const bookingFormSchema = z.object({
-  tripType: z.string().min(1, "Trip type is required"),
-  from: z.string().min(1, "From location is required"),
-  to: z.string().min(1, "Destination is required"),
-  startDate: z.string().min(1, "Start date is required"),
-  returnDate: z.string().optional(),
-  carType: z.string().min(1, "Car type is required"),
-  contactNumber: z.string().min(10, "Valid contact number is required"),
-  email: z.string().email("Please enter a valid email address").optional(),
-  driverLanguage: z.string().optional(),
-  additionalRequirements: z.string().optional(),
-});
-
-type ContactFormValues = z.infer<typeof contactFormSchema>;
-type BookingFormValues = z.infer<typeof bookingFormSchema>;
 
 const ContactPage = () => {
-  const { toast } = useToast();
-  const [isContactSubmitting, setIsContactSubmitting] = useState(false);
-  const [isBookingSubmitting, setIsBookingSubmitting] = useState(false);
+  const handleCall = (number: any) => {
+    window.location.href = `tel:${number}`;
+  };
 
-  const contactForm = useForm<ContactFormValues>({
-    resolver: zodResolver(contactFormSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      phone: "",
-      subject: "",
-      message: "",
-    },
-  });
+  const handleEmail = () => {
+    window.location.href = "mailto:gauthamnadar123@gmail.com";
+  };
 
-  const bookingForm = useForm<BookingFormValues>({
-    resolver: zodResolver(bookingFormSchema),
-    defaultValues: {
-      tripType: "outstation",
-      from: "",
-      to: "",
-      startDate: "",
-      returnDate: "",
-      carType: "",
-      contactNumber: "",
-      email: "",
-      driverLanguage: "",
-      additionalRequirements: "",
-    },
-  });
-
-  async function onContactSubmit(values: ContactFormValues) {
-    setIsContactSubmitting(true);
-    
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(values),
-      });
-
-      if (response.ok) {
-        toast({
-          title: "Message Sent",
-          description: "Your message has been successfully sent. We'll get back to you shortly.",
-        });
-        contactForm.reset();
-      } else {
-        throw new Error('Failed to send message');
-      }
-    } catch (error) {
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: "Failed to send message. Please try again.",
-      });
-    } finally {
-      setIsContactSubmitting(false);
-    }
-  }
-
-  async function onBookingSubmit(values: BookingFormValues) {
-    setIsBookingSubmitting(true);
-    
-    try {
-      const response = await fetch('/api/bookings', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(values),
-      });
-
-      if (response.ok) {
-        toast({
-          title: "Booking Submitted",
-          description: "Your booking request has been successfully submitted. We'll contact you shortly.",
-        });
-        bookingForm.reset();
-      } else {
-        throw new Error('Failed to submit booking');
-      }
-    } catch (error) {
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: "Failed to submit booking request. Please try again.",
-      });
-    } finally {
-      setIsBookingSubmitting(false);
-    }
-  }
+  const handleWhatsApp = (number: any) => {
+    window.open(`https://wa.me/${number}`, "_blank");
+  };
 
   return (
-    <>
-      <Helmet>
-        <title>Contact Us - Gautham Tours and Travels</title>
-        <meta
-          name="description"
-          content="Contact Gautham Tours and Travels for premium cab services across Maharashtra. Reach us at gauthamnadar123@gmail.com or call us."
-        />
-      </Helmet>
+    <div className="min-h-screen bg-slate-50">
+      {/* Hero Section */}
+      <div className="bg-white border-b border-slate-200">
+        <div className="container mx-auto px-4 py-16">
+          <div className="text-center max-w-3xl mx-auto">
+            <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+              Get In Touch
+            </h1>
+            <p className="text-xl text-slate-600 leading-relaxed">
+              Ready to travel with comfort and reliability? Contact our team for
+              personalized service and instant bookings.
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div className="container mx-auto px-4 py-16">
-        <div className="text-center mb-12">
-          <h1 className="font-sans font-bold text-3xl md:text-4xl mb-4">
-            Contact Us
-          </h1>
-          <p className="text-gray-600 max-w-3xl mx-auto">
-            We're here to assist you with any questions or special requirements. Get in touch or book your ride directly.
-          </p>
+        {/* Quick Contact Actions */}
+        <div className="grid md:grid-cols-3 gap-6 mb-16">
+          <Card className="border-slate-200 hover:shadow-lg transition-shadow duration-300">
+            <CardContent className="p-8 text-center">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Phone className="w-8 h-8 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-slate-900 mb-2">
+                Call Us Now
+              </h3>
+              <p className="text-slate-600 mb-4">
+                Speak directly with our team
+              </p>
+              <Button
+                onClick={() => handleCall("9833401900")}
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+              >
+                Call +91 9833401900
+              </Button>
+            </CardContent>
+          </Card>
+
+          <Card className="border-slate-200 hover:shadow-lg transition-shadow duration-300">
+            <CardContent className="p-8 text-center">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg
+                  className="w-8 h-8 text-green-600"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.382" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold text-slate-900 mb-2">
+                WhatsApp
+              </h3>
+              <p className="text-slate-600 mb-4">Quick messaging support</p>
+              <Button
+                onClick={() => handleWhatsApp("919833401900")}
+                className="w-full bg-green-600 hover:bg-green-700 text-white"
+              >
+                Message on WhatsApp
+              </Button>
+            </CardContent>
+          </Card>
+
+          <Card className="border-slate-200 hover:shadow-lg transition-shadow duration-300">
+            <CardContent className="p-8 text-center">
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Mail className="w-8 h-8 text-purple-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-slate-900 mb-2">
+                Email Us
+              </h3>
+              <p className="text-slate-600 mb-4">Send detailed inquiries</p>
+              <Button
+                onClick={handleEmail}
+                className="w-full bg-purple-600 hover:bg-purple-700 text-white"
+              >
+                Send Email
+              </Button>
+            </CardContent>
+          </Card>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Information */}
           <div>
-            <Card className="bg-gray-50 border-none shadow-md h-full">
-              <CardContent className="p-6 md:p-8">
-                <h2 className="font-sans font-semibold text-2xl mb-6">
-                  Get in Touch
+            <Card className="border-slate-200">
+              <CardContent className="p-8">
+                <h2 className="text-2xl font-bold text-slate-900 mb-8">
+                  Contact Information
                 </h2>
 
-                <div className="space-y-6">
+                <div className="space-y-8">
                   <div className="flex items-start gap-4">
-                    <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Phone className="text-primary h-5 w-5" />
+                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Phone className="w-6 h-6 text-blue-600" />
                     </div>
                     <div>
-                      <h3 className="font-medium text-lg mb-1">Phone</h3>
-                      <div className="space-y-1">
+                      <h3 className="font-semibold text-lg text-slate-900 mb-2">
+                        Phone Numbers
+                      </h3>
+                      <div className="space-y-2">
                         <a
                           href="tel:9833401900"
-                          className="block text-gray-700 hover:text-primary"
+                          className="block text-slate-700 hover:text-blue-600 transition-colors"
                         >
-                          +91 9833401900
+                          +91 9833401900 (Primary)
                         </a>
                         <a
                           href="tel:8850919298"
-                          className="block text-gray-700 hover:text-primary"
+                          className="block text-slate-700 hover:text-blue-600 transition-colors"
                         >
                           +91 8850919298
                         </a>
                         <a
                           href="tel:9619455668"
-                          className="block text-gray-700 hover:text-primary"
+                          className="block text-slate-700 hover:text-blue-600 transition-colors"
                         >
                           +91 9619455668
                         </a>
@@ -207,14 +140,16 @@ const ContactPage = () => {
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Mail className="text-primary h-5 w-5" />
+                    <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Mail className="w-6 h-6 text-purple-600" />
                     </div>
                     <div>
-                      <h3 className="font-medium text-lg mb-1">Email</h3>
+                      <h3 className="font-semibold text-lg text-slate-900 mb-2">
+                        Email Address
+                      </h3>
                       <a
                         href="mailto:gauthamnadar123@gmail.com"
-                        className="text-gray-700 hover:text-primary"
+                        className="text-slate-700 hover:text-purple-600 transition-colors"
                       >
                         gauthamnadar123@gmail.com
                       </a>
@@ -222,283 +157,152 @@ const ContactPage = () => {
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
-                      <MapPin className="text-primary h-5 w-5" />
+                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <MapPin className="w-6 h-6 text-green-600" />
                     </div>
                     <div>
-                      <h3 className="font-medium text-lg mb-1">Head Office</h3>
-                      <p className="text-gray-700">
+                      <h3 className="font-semibold text-lg text-slate-900 mb-2">
+                        Head Office
+                      </h3>
+                      <p className="text-slate-700 leading-relaxed">
                         004, 4/B, Matoshree, Maharashtra nagar
                         <br />
-                        Mumbai - 400088
+                        Mumbai - 400088, Maharashtra, India
                       </p>
                     </div>
                   </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Clock className="w-6 h-6 text-orange-600" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-lg text-slate-900 mb-2">
+                        Business Hours
+                      </h3>
+                      <div className="text-slate-700 space-y-1">
+                        <p>Monday - Sunday: 24/7 Available</p>
+                        <p className="text-sm text-slate-500">
+                          Emergency bookings accepted anytime
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="mt-8">
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Services Overview & Map */}
+          <div className="space-y-8">
+            {/* Services */}
+            <Card className="border-slate-200">
+              <CardContent className="p-8">
+                <h2 className="text-2xl font-bold text-slate-900 mb-6">
+                  Our Services
+                </h2>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="flex items-center gap-3 p-4 bg-slate-50 rounded-lg">
+                    <Car className="w-6 h-6 text-blue-600" />
+                    <span className="font-medium text-slate-900">
+                      Outstation Trips
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-3 p-4 bg-slate-50 rounded-lg">
+                    <Clock className="w-6 h-6 text-green-600" />
+                    <span className="font-medium text-slate-900">
+                      Local Travel
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-3 p-4 bg-slate-50 rounded-lg">
+                    <MapPin className="w-6 h-6 text-purple-600" />
+                    <span className="font-medium text-slate-900">
+                      Airport Transfer
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-3 p-4 bg-slate-50 rounded-lg">
+                    <Shield className="w-6 h-6 text-orange-600" />
+                    <span className="font-medium text-slate-900">
+                      Premium Cars
+                    </span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Map */}
+            <Card className="border-slate-200">
+              <CardContent className="p-8">
+                <h2 className="text-2xl font-bold text-slate-900 mb-6">
+                  Find Us
+                </h2>
+                <div className="rounded-lg overflow-hidden border border-slate-200">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.3224708648645!2d72.93836767600082!3d19.04955445280064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c67eb82d84c1%3A0x6403d6c27b46cba!2sMatoshri%20sahakari%20Grah%20Nirman%20Sanstha!5e0!3m2!1sen!2sin!4v1748951980887!5m2!1sen!2sin"
                     width="100%"
-                    height="250"
+                    height="300"
                     style={{ border: 0 }}
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                     title="Gautham Tours and Travels Office Location"
-                  ></iframe>
+                  />
                 </div>
               </CardContent>
             </Card>
           </div>
+        </div>
 
-          {/* Contact and Booking Forms */}
-          <div>
-            <Card className="bg-gray-50 border-none shadow-md">
-              <CardContent className="p-6 md:p-8">
-                <Tabs defaultValue="contact" className="w-full">
-                  <TabsList className="grid w-full grid-cols-2">
-                    <TabsTrigger value="contact">Send Message</TabsTrigger>
-                    <TabsTrigger value="booking">Quick Booking</TabsTrigger>
-                  </TabsList>
-                  
-                  <TabsContent value="contact" className="mt-6">
-                    <h2 className="font-sans font-semibold text-2xl mb-6">
-                      Send a Message
-                    </h2>
-                    <Form {...contactForm}>
-                      <form
-                        onSubmit={contactForm.handleSubmit(onContactSubmit)}
-                        className="space-y-4"
-                      >
-                        <FormField
-                          control={contactForm.control}
-                          name="name"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>Your Name</FormLabel>
-                              <FormControl>
-                                <Input
-                                  placeholder="Enter your full name"
-                                  {...field}
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-
-                        <FormField
-                          control={contactForm.control}
-                          name="email"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>Email Address</FormLabel>
-                              <FormControl>
-                                <Input
-                                  type="email"
-                                  placeholder="Enter your email address"
-                                  {...field}
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-
-                        <FormField
-                          control={contactForm.control}
-                          name="phone"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>Phone Number</FormLabel>
-                              <FormControl>
-                                <Input
-                                  placeholder="Enter your phone number"
-                                  {...field}
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-
-                        <FormField
-                          control={contactForm.control}
-                          name="subject"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>Subject</FormLabel>
-                              <FormControl>
-                                <Input
-                                  placeholder="Enter message subject"
-                                  {...field}
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-
-                        <FormField
-                          control={contactForm.control}
-                          name="message"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>Message</FormLabel>
-                              <FormControl>
-                                <Textarea
-                                  placeholder="Write your message here..."
-                                  rows={4}
-                                  className="resize-none"
-                                  {...field}
-                                />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-
-                        <Button
-                          type="submit"
-                          className="w-full bg-primary hover:bg-primary/90 text-white"
-                          disabled={isContactSubmitting}
-                        >
-                          {isContactSubmitting ? "Sending..." : "Send Message"}
-                        </Button>
-                      </form>
-                    </Form>
-                  </TabsContent>
-                  
-                  <TabsContent value="booking" className="mt-6">
-                    <h2 className="font-sans font-semibold text-2xl mb-6">
-                      Quick Booking
-                    </h2>
-                    <Form {...bookingForm}>
-                      <form onSubmit={bookingForm.handleSubmit(onBookingSubmit)} className="space-y-4">
-                        <FormField
-                          control={bookingForm.control}
-                          name="tripType"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>Trip Type</FormLabel>
-                              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                <FormControl>
-                                  <SelectTrigger>
-                                    <SelectValue placeholder="Select Trip Type" />
-                                  </SelectTrigger>
-                                </FormControl>
-                                <SelectContent>
-                                  <SelectItem value="outstation">Outstation Trip</SelectItem>
-                                  <SelectItem value="local">Local Travel</SelectItem>
-                                  <SelectItem value="airport">Airport Transfer</SelectItem>
-                                </SelectContent>
-                              </Select>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-
-                        <div className="grid grid-cols-2 gap-4">
-                          <FormField
-                            control={bookingForm.control}
-                            name="from"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel>From</FormLabel>
-                                <FormControl>
-                                  <Input placeholder="Pickup location" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-
-                          <FormField
-                            control={bookingForm.control}
-                            name="to"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel>To</FormLabel>
-                                <FormControl>
-                                  <Input placeholder="Destination" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                        </div>
-
-                        <div className="grid grid-cols-2 gap-4">
-                          <FormField
-                            control={bookingForm.control}
-                            name="startDate"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel>Start Date</FormLabel>
-                                <FormControl>
-                                  <Input type="date" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-
-                          <FormField
-                            control={bookingForm.control}
-                            name="carType"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel>Car Type</FormLabel>
-                                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                  <FormControl>
-                                    <SelectTrigger>
-                                      <SelectValue placeholder="Select Car" />
-                                    </SelectTrigger>
-                                  </FormControl>
-                                  <SelectContent>
-                                    <SelectItem value="sedan">Sedan</SelectItem>
-                                    <SelectItem value="suv">SUV</SelectItem>
-                                    <SelectItem value="luxury">Luxury</SelectItem>
-                                    <SelectItem value="tempo">Tempo Traveller</SelectItem>
-                                  </SelectContent>
-                                </Select>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                        </div>
-
-                        <FormField
-                          control={bookingForm.control}
-                          name="contactNumber"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>Contact Number</FormLabel>
-                              <FormControl>
-                                <Input placeholder="Your phone number" {...field} />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
-                        />
-
-                        <Button
-                          type="submit"
-                          className="w-full bg-primary hover:bg-primary/90 text-white"
-                          disabled={isBookingSubmitting}
-                        >
-                          {isBookingSubmitting ? "Submitting..." : "Book Now"}
-                        </Button>
-                      </form>
-                    </Form>
-                  </TabsContent>
-                </Tabs>
-              </CardContent>
-            </Card>
-          </div>
+        {/* Why Choose Us */}
+        <div className="mt-16">
+          <Card className="border-slate-200 bg-white">
+            <CardContent className="p-8">
+              <h2 className="text-2xl font-bold text-slate-900 text-center mb-8">
+                Why Choose Gautham Tours?
+              </h2>
+              <div className="grid md:grid-cols-3 gap-8">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Star className="w-8 h-8 text-blue-600" />
+                  </div>
+                  <h3 className="font-semibold text-lg text-slate-900 mb-2">
+                    Premium Service
+                  </h3>
+                  <p className="text-slate-600">
+                    Professional drivers, well-maintained vehicles, and punctual
+                    service every time.
+                  </p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Shield className="w-8 h-8 text-green-600" />
+                  </div>
+                  <h3 className="font-semibold text-lg text-slate-900 mb-2">
+                    Safe & Reliable
+                  </h3>
+                  <p className="text-slate-600">
+                    Your safety is our priority with GPS tracking and 24/7
+                    customer support.
+                  </p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Clock className="w-8 h-8 text-purple-600" />
+                  </div>
+                  <h3 className="font-semibold text-lg text-slate-900 mb-2">
+                    24/7 Available
+                  </h3>
+                  <p className="text-slate-600">
+                    Round-the-clock service for all your travel needs, whenever
+                    you need us.
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

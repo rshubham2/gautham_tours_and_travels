@@ -1,125 +1,211 @@
 import { Link } from "wouter";
-import { Phone } from "lucide-react";
+import { Phone, Award } from "lucide-react";
 import ParticleBackground from "../components/ParticleBackground";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-[85vh] flex items-center overflow-hidden">
-      {/* Background Image with Overlay and Gradient */}
+    <section className="relative min-h-[100vh] sm:min-h-[85vh] flex items-center overflow-hidden">
+      {/* Video Background with Overlay */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/40 z-10"></div>
-        <img 
-          src="https://images.unsplash.com/photo-1544427920-c49ccfb85579?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&h=1080" 
-          alt="Scenic Indian highway" 
-          className="w-full h-full object-cover scale-in" 
-        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/60 to-black/70 z-10"></div>
+
+        {/* Video Background */}
+        <video
+          className="w-full h-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="src/assets/hero_poster.jpg"
+        >
+          <source src="src/assets/hero_intro.mp4" type="video/mp4" />
+          {/* Fallback image if video fails */}
+          <img
+            src="src/assets/hero_poster.jpg"
+            alt="Scenic Indian highway"
+            className="w-full h-full object-cover"
+          />
+        </video>
+
         {/* Particle Background */}
-        <ParticleBackground 
-          className="opacity-30"
-          particleCount={30}
+        <ParticleBackground
+          className="opacity-20 sm:opacity-30"
+          particleCount={20}
           particleColor="#FF6B35"
-          particleSize={3}
+          particleSize={2}
           speed={0.3}
         />
       </div>
-      
-      <div className="container mx-auto px-4 z-10 pt-10">
-        <div className="grid md:grid-cols-2 gap-10 items-center">
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 z-10 pt-16 sm:pt-10">
+        <div className="grid lg:grid-cols-3 gap-8 lg:gap-12 items-center">
           {/* Hero Content */}
-          <div className="text-white fade-in">
+          <div className="text-white fade-in order-2 lg:order-1 lg:col-span-2">
             <div className="relative inline-flex mb-4">
-              <span className="bg-secondary/20 text-secondary px-4 py-1 rounded-full text-sm font-medium">Maharashtra Service</span>
+              <div className="flex items-center bg-slate-800/90 backdrop-blur-sm text-blue-100 px-4 py-2 rounded-full text-sm font-medium border border-slate-600/50 shadow-lg">
+                <Award className="w-4 h-4 mr-2 text-blue-400" />
+                <span>Maharashtra Service</span>
+              </div>
             </div>
-            <h1 className="font-sans font-bold text-4xl md:text-5xl lg:text-6xl mb-6 leading-tight">
-              Your Journey, 
-              <span className="block text-secondary">Our Responsibility</span>
+
+            <h1 className="font-sans font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-4 sm:mb-6 leading-[1.1] tracking-tight">
+              Your Journey,
+              <span className="block text-orange-400 mt-2 drop-shadow-lg">
+                Our Responsibility
+              </span>
             </h1>
-            <p className="text-lg md:text-xl mb-8 text-gray-200 max-w-xl">
-              Experience premium chauffeur-driven cab services across Maharashtra and beyond. Travel with comfort, flexibility, and peace of mind.
+
+            <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-gray-100 max-w-2xl leading-relaxed font-light">
+              Experience premium chauffeur-driven cab services across
+              Maharashtra and beyond. Travel with comfort, flexibility, and
+              peace of mind.
             </p>
-            <div className="flex flex-wrap gap-4">
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 mb-8 sm:mb-12">
               <Link href="/booking">
-                <span className="bg-primary hover:bg-primary/90 text-white font-medium py-3 px-8 rounded-lg transition shadow-lg inline-flex items-center cursor-pointer btn-hover-effect">
-                  <span>Book Your Cab Now</span>
-                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                <span className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center justify-center cursor-pointer group w-full sm:w-auto transform hover:-translate-y-0.5">
+                  <span className="text-base">Book Your Cab Now</span>
+                  <svg
+                    className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    ></path>
                   </svg>
                 </span>
               </Link>
-              <a href="tel:9833401900" className="bg-white hover:bg-gray-100 text-primary font-medium py-3 px-8 rounded-lg transition shadow-lg flex items-center">
-                <Phone className="h-5 w-5 mr-2" />
-                <span>Call Now</span>
+
+              <a
+                href="tel:9833401900"
+                className="bg-slate-100 hover:bg-white text-slate-800 border border-slate-200 hover:border-slate-300 font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center group w-full sm:w-auto transform hover:-translate-y-0.5"
+              >
+                <Phone className="h-5 w-5 mr-2 group-hover:rotate-6 transition-transform duration-300" />
+                <span className="text-base">Call Now</span>
               </a>
             </div>
-            <div className="mt-12 flex items-center">
-              <div className="flex -space-x-2 mr-4">
-                <img className="w-10 h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/women/40.jpg" alt="Customer" />
-                <img className="w-10 h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Customer" />
-                <img className="w-10 h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/women/24.jpg" alt="Customer" />
+
+            {/* Social Proof */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+              <div className="flex -space-x-2">
+                <img
+                  className="w-10 h-10 rounded-full border-2 border-slate-600 shadow-lg"
+                  src="https://randomuser.me/api/portraits/women/40.jpg"
+                  alt="Customer"
+                />
+                <img
+                  className="w-10 h-10 rounded-full border-2 border-slate-600 shadow-lg"
+                  src="https://randomuser.me/api/portraits/men/32.jpg"
+                  alt="Customer"
+                />
+                <img
+                  className="w-10 h-10 rounded-full border-2 border-slate-600 shadow-lg"
+                  src="https://randomuser.me/api/portraits/women/24.jpg"
+                  alt="Customer"
+                />
+                <div className="w-10 h-10 rounded-full border-2 border-slate-600 bg-blue-600 flex items-center justify-center text-white text-xs font-bold shadow-lg">
+                  10K+
+                </div>
               </div>
               <div>
-                <p className="text-white font-medium">Trusted by 10,000+ customers</p>
-                <div className="flex items-center">
+                <p className="text-white font-medium text-base">
+                  Trusted by 10,000+ customers
+                </p>
+                <div className="flex items-center mt-1">
                   {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-4 h-4 text-secondary" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <svg
+                      key={i}
+                      className="w-4 h-4 text-yellow-400"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
                     </svg>
                   ))}
-                  <span className="ml-1 text-white">4.9/5</span>
+                  <span className="ml-2 text-slate-300 font-medium text-sm">
+                    4.9/5 Rating
+                  </span>
                 </div>
               </div>
             </div>
           </div>
-          
+
           {/* Founder Section */}
-          <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-2xl border-0 scale-in relative p-8">
-            <ParticleBackground 
-              className="opacity-10 rounded-xl"
-              particleCount={15}
-              particleColor="#3B82F6"
-              particleSize={2}
-              speed={0.2}
-            />
-            <div className="relative z-10 text-center">
-              <div className="mb-6">
-                <img 
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=300" 
-                  alt="R.K Sevar Nadar - Founder" 
-                  className="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-primary/20 shadow-lg object-cover"
-                />
-                <h3 className="text-2xl font-bold text-primary mb-2">R.K Sevar Nadar</h3>
-                <p className="text-gray-600 font-medium">Founder & Managing Director</p>
+          <div className="order-1 lg:order-2 mx-auto w-full max-w-md lg:max-w-none">
+            <div className="group flex items-center gap-6 bg-white/10 backdrop-blur-lg rounded-2xl p-6 shadow-2xl border border-white/20 hover:bg-white/15 transition-all duration-500 hover:shadow-3xl hover:scale-105 cursor-pointer">
+              <div className="relative flex-shrink-0">
+                <div className="w-40 h-40 rounded-full bg-gradient-to-br from-blue-100 to-indigo-100 p-1 shadow-2xl group-hover:shadow-3xl transition-all duration-500">
+                  <img
+                    src="src/assets/founder.jpeg"
+                    alt="R.K Selvan Nadar - Founder"
+                    className="w-full h-full rounded-full object-cover border-4 border-white/50 group-hover:border-white/70 transition-all duration-500"
+                  />
+                </div>
+                <div className="absolute -bottom-2 -right-2 bg-emerald-500 text-white rounded-full w-10 h-10 flex items-center justify-center text-sm font-bold shadow-lg border-2 border-white animate-pulse">
+                  ✓
+                </div>
+                <div className="absolute top-0 -left-2 w-6 h-6 bg-orange-400 rounded-full animate-bounce opacity-60"></div>
+                <div className="absolute -top-2 right-4 w-4 h-4 bg-blue-400 rounded-full animate-pulse opacity-50"></div>
               </div>
-              
-              <div className="text-left space-y-4">
-                <p className="text-gray-700 leading-relaxed">
-                  "With over 15 years of experience in the travel industry, I founded Gautham Tours and Travels with a vision to make road travel comfortable, safe, and memorable for every passenger."
-                </p>
-                
-                <div className="bg-primary/5 p-4 rounded-lg">
-                  <h4 className="font-semibold text-primary mb-2">Our Mission</h4>
-                  <p className="text-sm text-gray-600">
-                    To provide exceptional chauffeur-driven services that exceed customer expectations while ensuring safety, comfort, and reliability on every journey.
+              <div className="flex-1 min-w-0 text-white">
+                <div className="flex items-center gap-2 mb-2">
+                  <h3 className="text-2xl font-bold text-white drop-shadow-lg group-hover:text-blue-100 transition-colors duration-300">
+                    R.K Selvan Nadar
+                  </h3>
+                  <div className="w-2 h-2 bg-emerald-400 rounded-full animate-ping"></div>
+                </div>
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="w-3 h-3 bg-gradient-to-r from-orange-400 to-red-400 rounded-full"></div>
+                  <p className="text-blue-100 font-medium text-base">
+                    Founder & Managing Director
                   </p>
                 </div>
-                
-                <div className="flex items-center justify-center gap-4 pt-4">
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">15+</div>
-                    <div className="text-xs text-gray-600">Years Experience</div>
+                <p className="text-gray-100 text-base leading-relaxed font-light group-hover:text-white transition-colors duration-300">
+                  "15+ years of experience making road travel comfortable, safe,
+                  and memorable."
+                </p>
+                <div className="flex items-center mt-3 gap-2">
+                  <div className="flex gap-1">
+                    {[...Array(3)].map((_, i) => (
+                      <div
+                        key={i}
+                        className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"
+                        style={{ animationDelay: `${i * 0.2}s` }}
+                      ></div>
+                    ))}
                   </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">50+</div>
-                    <div className="text-xs text-gray-600">Vehicles</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="text-2xl font-bold text-primary">10K+</div>
-                    <div className="text-xs text-gray-600">Happy Customers</div>
-                  </div>
+                  <span className="text-xs text-blue-200 font-medium">
+                    Trusted Leader
+                  </span>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20 hidden sm:block">
+        <div className="animate-bounce">
+          <svg
+            className="w-6 h-6 text-white/70"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            ></path>
+          </svg>
         </div>
       </div>
     </section>

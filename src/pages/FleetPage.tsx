@@ -7,7 +7,7 @@ const FleetPage = () => {
     {
       category: "Swift Dzire Car Rental",
       description: "Perfect for city travel and short trips",
-      image: "https://imgd.aeplcdn.com/370x208/n/cw/ec/170173/dzire-2024-exterior-right-front-three-quarter-3.jpeg?isig=0&q=80",
+      image: "src/assets/suzuki-dzire.jpg",
       capacity: "4 Passengers",
       luggage: "2 Large Bags",
       fuelType: "Petrol/Diesel",
@@ -15,15 +15,16 @@ const FleetPage = () => {
         "Air Conditioning",
         "Power Steering",
         "Music System",
-        "Comfortable Seating"
+        "Comfortable Seating",
       ],
       pricing: "₹9-10/km",
-      idealFor: "City travel, Airport transfers, Short trips"
+      idealFor: "City travel, Airport transfers, Short trips",
     },
     {
       category: "Innova Crysta Car Rental",
       description: "Premium SUV for comfortable family travel",
-      image: "https://imgd.aeplcdn.com/664x374/n/cw/ec/140809/innova-crysta-exterior-right-front-three-quarter-2.png?isig=0&q=80",
+      image:
+        "https://imgd.aeplcdn.com/664x374/n/cw/ec/140809/innova-crysta-exterior-right-front-three-quarter-2.png?isig=0&q=80",
       capacity: "7 Passengers",
       luggage: "4 Large Bags",
       fuelType: "Diesel",
@@ -31,16 +32,16 @@ const FleetPage = () => {
         "Premium Interior",
         "Captain Seats",
         "Ample Legroom",
-        "Advanced Safety Features"
+        "Advanced Safety Features",
       ],
       pricing: "₹13-15/km",
       idealFor: "Family trips, Outstation travel, Group tours",
-      popular: true
+      popular: true,
     },
     {
-      category: "Innova Car Rental",
+      category: "Rumion Car Rental",
       description: "Reliable and spacious for group travel",
-      image: "https://imgd.aeplcdn.com/664x374/n/cw/ec/27074/innova-exterior-right-front-three-quarter-148156.jpeg?isig=0&q=80",
+      image: "src/assets/rumion.png",
       capacity: "7 Passengers",
       luggage: "3 Large Bags",
       fuelType: "Diesel",
@@ -48,31 +49,16 @@ const FleetPage = () => {
         "Spacious Interior",
         "Reliable Performance",
         "Good Ground Clearance",
-        "Fuel Efficient"
+        "Fuel Efficient",
       ],
       pricing: "₹12-14/km",
-      idealFor: "Long distance travel, Family vacations"
-    },
-    {
-      category: "Ertiga Car Rental",
-      description: "Compact MPV for small groups",
-      image: "https://imgd.aeplcdn.com/664x374/n/cw/ec/130591/fronx-exterior-right-front-three-quarter-2.jpeg?isig=0&q=80",
-      capacity: "7 Passengers",
-      luggage: "2 Large Bags",
-      fuelType: "Petrol/Diesel",
-      features: [
-        "Compact Design",
-        "Easy Maneuverability",
-        "Good Fuel Economy",
-        "Modern Features"
-      ],
-      pricing: "₹11-13/km",
-      idealFor: "City tours, Small group travel"
+      idealFor: "Long distance travel, Family vacations",
     },
     {
       category: "Tavera Car Rental",
       description: "Sturdy SUV for rough terrains",
-      image: "https://imgd.aeplcdn.com/664x374/n/cw/ec/27074/tavera-exterior-right-front-three-quarter.jpeg?isig=0&q=80",
+      image:
+        "https://imgd.aeplcdn.com/664x374/n/cw/ec/27074/tavera-exterior-right-front-three-quarter.jpeg?isig=0&q=80",
       capacity: "9 Passengers",
       luggage: "4 Large Bags",
       fuelType: "Diesel",
@@ -80,15 +66,16 @@ const FleetPage = () => {
         "High Ground Clearance",
         "Robust Build",
         "Spacious Cabin",
-        "Reliable Engine"
+        "Reliable Engine",
       ],
       pricing: "₹12-14/km",
-      idealFor: "Hill stations, Rough roads, Large groups"
+      idealFor: "Hill stations, Rough roads, Large groups",
     },
     {
       category: "Tata Winger Rental",
       description: "Large capacity for big groups",
-      image: "https://5.imimg.com/data5/CE/AC/MY-15973426/force-traveller-26-mini-bus-500x500.jpg",
+      image:
+        "https://5.imimg.com/data5/CE/AC/MY-15973426/force-traveller-26-mini-bus-500x500.jpg",
       capacity: "12 Passengers",
       luggage: "6 Large Bags",
       fuelType: "Diesel",
@@ -96,15 +83,16 @@ const FleetPage = () => {
         "High Seating Capacity",
         "Comfortable Seats",
         "Large Luggage Space",
-        "Powerful Engine"
+        "Powerful Engine",
       ],
       pricing: "₹18-22/km",
-      idealFor: "Corporate groups, Wedding parties, Large families"
+      idealFor: "Corporate groups, Wedding parties, Large families",
     },
     {
       category: "Bus & Tempo Travellers Rental",
       description: "Maximum capacity for large groups",
-      image: "https://5.imimg.com/data5/SELLER/Default/2023/8/334588867/YF/YN/YJ/102004658/tempo-traveller-on-rent-500x500.jpg",
+      image:
+        "https://5.imimg.com/data5/SELLER/Default/2023/8/334588867/YF/YN/YJ/102004658/tempo-traveller-on-rent-500x500.jpg",
       capacity: "12-26 Passengers",
       luggage: "8+ Large Bags",
       fuelType: "Diesel",
@@ -112,11 +100,11 @@ const FleetPage = () => {
         "Maximum Capacity",
         "Reclining Seats",
         "Entertainment System",
-        "Professional Driver"
+        "Professional Driver",
       ],
       pricing: "₹25-35/km",
-      idealFor: "Large groups, Corporate events, Pilgrimages"
-    }
+      idealFor: "Large groups, Corporate events, Pilgrimages",
+    },
   ];
 
   const fleetFeatures = [
