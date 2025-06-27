@@ -134,7 +134,7 @@ const BookingForm = () => {
 
       // Send to backend API
       const response = await fetch(
-        "https://gautham-tours-and-travels.vercel.app/api/bookings",
+        "https://gautham-tours-and-travels-server.vercel.app/api/bookings",
         {
           method: "POST",
           headers: {
