@@ -16,12 +16,12 @@ const Hero = () => {
           loop
           muted
           playsInline
-          poster="src/assets/hero_poster.jpg"
+          poster="hero_poster.jpg"
         >
-          <source src="src/assets/hero_intro.mp4" type="video/mp4" />
+          <source src="hero_intro.mp4" type="video/mp4" />
           {/* Fallback image if video fails */}
           <img
-            src="src/assets/hero_poster.jpg"
+            src="hero_poster.jpg"
             alt="Scenic Indian highway"
             className="w-full h-full object-cover"
           />
@@ -142,7 +142,7 @@ const Hero = () => {
               <div className="relative flex-shrink-0">
                 <div className="w-40 h-40 rounded-full bg-gradient-to-br from-blue-100 to-indigo-100 p-1 shadow-2xl group-hover:shadow-3xl transition-all duration-500">
                   <img
-                    src="src/assets/founder.jpeg"
+                    src="founder.jpeg"
                     alt="R.K Selvan Nadar - Founder"
                     className="w-full h-full rounded-full object-cover border-4 border-white/50 group-hover:border-white/70 transition-all duration-500"
                   />

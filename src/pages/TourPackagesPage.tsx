@@ -61,7 +61,7 @@ const TourPackagesPage = () => {
     pilgrimage: [
       {
         name: "Shirdi Darshan",
-        image: "src/assets/shirdi_darshan.jpg",
+        image: "shirdi_darshan.jpg",
         canSee: [
           "Sai Baba Temple",
           "Dwarkamai Mosque",
@@ -82,7 +82,7 @@ const TourPackagesPage = () => {
       },
       {
         name: "Bhimashankar Jyotirlinga",
-        image: "src/assets/bhimashankar-temple.jpg",
+        image: "bhimashankar-temple.jpg",
         canSee: [
           "Ancient Jyotirlinga Temple",
           "Wildlife Sanctuary",
@@ -103,7 +103,7 @@ const TourPackagesPage = () => {
       },
       {
         name: "Trimbakeshwar Temple",
-        image: "src/assets/Trimbakeshwar_Temple-Nashik-Maharashtra-1.jpg",
+        image: "Trimbakeshwar_Temple-Nashik-Maharashtra-1.jpg",
         canSee: [
           "Trimbakeshwar Temple",
           "Brahmagiri Hill",
@@ -124,7 +124,7 @@ const TourPackagesPage = () => {
       },
       {
         name: "Somnath Dwarka Tour",
-        image: "src/assets/dwarka-and-somnath-tour-1.png",
+        image: "dwarka-and-somnath-tour-1.png",
         canSee: [
           "Somnath Temple",
           "Dwarka Temple",
@@ -190,7 +190,7 @@ const TourPackagesPage = () => {
       },
       {
         name: "Matheran Hill Station",
-        image: "src/assets/MATHERAN-4.jpg",
+        image: "MATHERAN-4.jpg",
         canSee: [
           "Panorama Point Sunrise",
           "Echo Point Valley",
@@ -328,7 +328,7 @@ const TourPackagesPage = () => {
       {
         name: "Ajanta Ellora Caves",
         image:
-          "src/assets/ajanta-caves-chhatrapati-sambhaji-nagar-maharashtra-attr-hero-1.jpeg",
+          "ajanta-caves-chhatrapati-sambhaji-nagar-maharashtra-attr-hero-1.jpeg",
         canSee: [
           "Ancient Ajanta Paintings",
           "Monolithic Ellora Caves",
@@ -349,7 +349,7 @@ const TourPackagesPage = () => {
       },
       {
         name: "Pune Heritage Tour",
-        image: "src/assets/shaniwar-wada-pune-maharashtra-tri-iter-day1.jpg",
+        image: "shaniwar-wada-pune-maharashtra-tri-iter-day1.jpg",
         canSee: [
           "Historic Shaniwar Wada",
           "Memorial Aga Khan Palace",

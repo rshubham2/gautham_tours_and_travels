@@ -7,7 +7,7 @@ const FleetPage = () => {
     {
       category: "Swift Dzire Car Rental",
       description: "Perfect for city travel and short trips",
-      image: "src/assets/suzuki-dzire.jpg",
+      image: "suzuki-dzire.jpg",
       capacity: "4 Passengers",
       luggage: "2 Large Bags",
       fuelType: "Petrol/Diesel",
@@ -41,7 +41,7 @@ const FleetPage = () => {
     {
       category: "Rumion Car Rental",
       description: "Reliable and spacious for group travel",
-      image: "src/assets/rumion.png",
+      image: "rumion.png",
       capacity: "7 Passengers",
       luggage: "3 Large Bags",
       fuelType: "Diesel",

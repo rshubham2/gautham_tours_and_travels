@@ -47,21 +47,21 @@ const About = () => {
           <div className="grid grid-cols-2 gap-4">
             {/* Shirdi */}
             <img
-              src="src/assets/shirdi.jpg"
+              src="shirdi.jpg"
               alt="shirdi temple"
               className="rounded-xl shadow-md h-full object-cover"
             />
 
             {/* Bus */}
             <img
-              src="src/assets/image.png"
+              src="image.png"
               alt="Bus"
               className="rounded-xl shadow-md object-cover mb-4"
             />
 
             {/* Grishneshwar */}
             <img
-              src="src/assets/grishneshwar.jpg"
+              src="grishneshwar.jpg"
               alt="Maharashtra tourist destination"
               className="rounded-xl shadow-md object-cover mt-4 col-span-2"
             />

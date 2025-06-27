@@ -7,14 +7,14 @@ const carOptions = [
     title: "AC Hatchback",
     description: "Economy Cabs",
     seats: "4 seats",
-    image: "src/assets/suzuki-dzire.jpg",
+    image: "suzuki-dzire.jpg",
     info: "Perfect for city travel and short trips, our hatchbacks are fuel-efficient and easy to navigate in urban settings.",
   },
   {
     title: "AC Sedan",
     description: "Premium Economy Cabs",
     seats: "7 seats",
-    image: "src/assets/rumion.png",
+    image: "rumion.png",
     info: "Our sedans offer an excellent balance of comfort and value, ideal for business travel or small families.",
   },
   {
