@@ -66,7 +66,7 @@ const Header = () => {
         <Link href="/">
           <span className="flex items-center cursor-pointer">
             <img
-              src="../assets/logo-Photoroom.png"
+              src="logo-Photoroom.png"
               alt="Gautham Tours and Travels Logo"
               className="h-12 w-12"
             />
