@@ -8,7 +8,7 @@ const faqs = [
   },
   {
     question: "Can I modify my booking after confirmation?",
-    answer: "Yes, you can modify your booking up to 24 hours before the scheduled pickup time. For any changes, please contact our customer support team at 9045450000 or through the email provided in your booking confirmation."
+    answer: "Yes, you can modify your booking up to 24 hours before the scheduled pickup time. For any changes, please contact our customer support team at 9833401900 or through the email provided in your booking confirmation."
   },
   {
     question: "What happens if I need to cancel my booking?",
