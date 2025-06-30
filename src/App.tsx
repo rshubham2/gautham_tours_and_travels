@@ -12,12 +12,14 @@ import ContactPage from "./pages/ContactPage";
 import TourPackagesPage from "./pages/TourPackagesPage";
 import FleetPage from "./pages/FleetPage";
 import NotFound from "./pages/not-found";
+import ScrollToTop from "./components/ScrollOnTop";
 
 function App() {
   return (
     <TooltipProvider>
       <ToastProvider>
         <div className="min-h-screen flex flex-col">
+          <ScrollToTop />
           <Header />
           <main className="flex-1">
             <Switch>

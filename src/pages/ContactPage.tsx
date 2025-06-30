@@ -165,7 +165,7 @@ const ContactPage = () => {
                         Head Office
                       </h3>
                       <p className="text-slate-700 leading-relaxed">
-                        004, 4/B, Matoshree, Maharashtra nagar
+                        113, 4/B, Matoshree, Maharashtra nagar
                         <br />
                         Mumbai - 400088, Maharashtra, India
                       </p>
